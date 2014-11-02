@@ -483,8 +483,8 @@
             yMin = 0.0f;
         }
 
-        _yValueMin = yMin;
-        _yValueMax = yMax;
+        _yValueMin = floor(yMin/10) * 10;
+        _yValueMax = ceil(yMax/10) * 10;
 
         _chartData = data;
 
