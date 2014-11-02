@@ -155,6 +155,7 @@
             PNChartLabel *label = [[PNChartLabel alloc] initWithFrame:CGRectMake(x, y, (NSInteger)_xLabelWidth, (NSInteger)_chartMargin)];
             [label setTextAlignment:NSTextAlignmentCenter];
             label.text = labelText;
+            label.numberOfLines = 2;
             [self setCustomStyleForXLabel:label];
             [self addSubview:label];
         }
