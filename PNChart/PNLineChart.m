@@ -56,6 +56,34 @@
     return self;
 }
 
+- (void) layoutSubviews
+{
+    [super layoutSubviews];
+    
+    if (_chartData){
+        _chartCavanWidth = self.frame.size.width - _chartMargin * 2;
+        _chartCavanHeight = self.frame.size.height - _chartMargin * 2;
+        
+        if (_showLabel) {
+            _xLabelWidth = _chartCavanWidth / [_xLabels count];
+        }
+        else{
+            _xLabelWidth = (self.frame.size.width) / [_xLabels count];
+        }
+        
+        for (UIView *v in [self subviews]){
+            if ([v isKindOfClass: PNChartLabel.class]){
+                [v removeFromSuperview];
+            }
+        }
+        
+        [self setYLabels:_yLabels];
+        [self setXLabels:_xLabels];
+        
+        [self strokeChart];
+    }
+}
+
 #pragma mark instance methods
 
 - (void)setYLabels:(NSArray *)yLabels
